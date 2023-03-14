@@ -66,7 +66,7 @@ def main():
 
     # EJERCICIO 6
     def ejercicio6():
-        nueva_persona = Persona("Pablo", 17, "11234234")
+        nueva_persona = Persona()
         
         nueva_persona.mostrar()
         print(nueva_persona.es_mayor_de_edad())
