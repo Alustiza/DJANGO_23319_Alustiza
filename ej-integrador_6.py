@@ -73,7 +73,7 @@ def main():
     
        
 
-    # Ejecuto el Ejercicio 5
+    # Ejecuto el Ejercicio 6
     ejercicio6()
 
 
