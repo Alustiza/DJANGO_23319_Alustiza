@@ -28,7 +28,7 @@ class Persona:
             self.edad = edad
             self.dni = dni
         else:
-            print("La edad no puede ser un número negativo.")
+            print("La edad no puede ser un número negativo. De manera temporal le asignamos el valor 0")
             self.nombre = nombre
             self.edad = 0
             self.dni = dni
@@ -46,7 +46,7 @@ class Persona:
         if edad >= 0:
             self.edad = edad
         else:
-            print("La edad no puede ser un número negativo.")
+            print("La edad no puede ser un número negativo. De manera temporal le asignamos el valor 0")
 
     def get_edad(self):
         return self.edad
@@ -173,7 +173,7 @@ def main():
 
 
         # Crear un objeto CuentaJoven
-        cuenta_joven_Lima = CuentaJoven("Lima",-72, "50343587", 777)
+        cuenta_joven_Lima = CuentaJoven("Lima",21, "50343587", 777)
 
         # Asignar un valor de bonificacion a la Cuenta Joven
         cuenta_joven_Lima.set_bonificacion(42)
