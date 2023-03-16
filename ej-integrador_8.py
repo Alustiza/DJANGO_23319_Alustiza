@@ -173,7 +173,7 @@ def main():
 
 
         # Crear un objeto CuentaJoven
-        cuenta_joven_Lima = CuentaJoven("Lima",26, "50343587", 777)
+        cuenta_joven_Lima = CuentaJoven("Lima",-72, "50343587", 777)
 
         # Asignar un valor de bonificacion a la Cuenta Joven
         cuenta_joven_Lima.set_bonificacion(42)
