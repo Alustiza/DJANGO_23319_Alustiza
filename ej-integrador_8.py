@@ -22,33 +22,46 @@ ACTIVIDAD DE INTEGRACIÓN
 
 class Persona:
     def __init__(self, nombre="", edad=0, dni=""):
-        self.nombre = nombre
-        self.edad = edad
-        self.dni = dni
+        
+        if edad >= 0:
+            self.nombre = nombre
+            self.edad = edad
+            self.dni = dni
+        else:
+            print("La edad no puede ser un número negativo.")
+            self.nombre = nombre
+            self.edad = 0
+            self.dni = dni
+        
     
-    def get_nombre(self):
-        return self.nombre
-    
+
     def set_nombre(self, nombre):
         self.nombre = nombre
-    
-    def get_edad(self):
-        return self.edad
+
+
+    def get_nombre(self):
+        return self.nombre
     
     def set_edad(self, edad):
         if edad >= 0:
             self.edad = edad
         else:
             print("La edad no puede ser un número negativo.")
-    
-    def get_dni(self):
-        return self.dni
+
+    def get_edad(self):
+        return self.edad
     
     def set_dni(self, dni):
         if len(dni) == 8:
             self.dni = dni
         else:
             print("El DNI debe tener 8 caracteres.")
+
+            
+    def get_dni(self):
+        return self.dni
+    
+    
     
     def mostrar(self):
         print("Nombre:", self.nombre)
@@ -86,6 +99,7 @@ class Cuenta(Persona):
 class CuentaJoven(Cuenta):
     def __init__(self, nombre, edad, dni, cantidad, bonificacion=0):
         print("")
+
         if edad  < 18 :
             print("Lo siento, eres menor de 18 años y no puedes abrir una cuenta con nosotros.")
             super().__init__(nombre, edad, dni)
@@ -104,14 +118,17 @@ class CuentaJoven(Cuenta):
                 self.tipoCuenta = "Cuenta Joven:"
         
     def set_bonificacion(self, bonificacion):     
-        if self.get_edad() > 25:
-            # print("Lo siento, no se puede asignar una bonificación a una cuenta para mayores de 25 años.")
-            self.bonificacion = 0 / 100
-        elif self.get_edad() < 18:
-            # print("Lo siento, no se puede asignar una bonificación a una cuenta para menores de 18 años.")
-            self.bonificacion = 0 / 100
-        else:
+        if self.es_titular_valido():
             self.bonificacion = bonificacion / 100
+        else:
+            if self.get_edad() > 25:
+                # print("Lo siento, no se puede asignar una bonificación a una cuenta para mayores de 25 años.")
+                self.bonificacion = 0 / 100
+            elif self.edad < 18:
+                # print("Lo siento, no se puede asignar una bonificación a una cuenta para menores de 18 años.")
+                self.bonificacion = 0 / 100
+       
+            
 
     def get_bonificacion(self):
         return self.bonificacion
@@ -120,13 +137,24 @@ class CuentaJoven(Cuenta):
         print("")
         print(self.tipoCuenta)
         print("")
-        print("Nombre:", self.get_nombre())
-        print("Edad:", self.get_edad())
-        print("DNI:", self.get_dni())
-        print("Cantidad:", self.get_cantidad())
+        # print("Nombre:", self.get_nombre())
+        # print("Edad:", self.get_edad())
+        # print("DNI:", self.get_dni())
+        # print("Cantidad:", self.get_cantidad())
+        super().mostrar()
         print("Bonificación:", "{:.0f}%".format(self.bonificacion * 100))
         print("")
 
+    def es_titular_valido(self):
+        return 18 <= self.get_edad() <= 25
+    
+    def retirar(self, cantidad):
+        if self.es_titular_valido():
+            super().retirar(cantidad)
+            print("El retiro de", cantidad, "se realizó correctamente.")
+
+        else:
+            print("El titular no es válido para retirar dinero.")
 
 
 
@@ -145,10 +173,16 @@ def main():
 
 
         # Crear un objeto CuentaJoven
-        cuenta_joven_Lima = CuentaJoven("Lima", 19, "50343587", 777)
+        cuenta_joven_Lima = CuentaJoven("Lima",26, "50343587", 777)
 
         # Asignar un valor de bonificacion a la Cuenta Joven
         cuenta_joven_Lima.set_bonificacion(42)
+
+        cuenta_joven_Lima.mostrar()
+        print("El titular califica para una Cuenta Joven:", cuenta_joven_Lima.es_titular_valido())
+        print("")
+
+        cuenta_joven_Lima.retirar(10)
 
         cuenta_joven_Lima.mostrar()
 
