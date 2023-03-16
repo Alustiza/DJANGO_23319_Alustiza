@@ -5,9 +5,14 @@
 CODO A CODO: DJANGO
 AÑO: 2023
 COMISIÓN: 23319
+@author: pabloalustiza
+
 ACTIVIDAD DE INTEGRACIÓN 
 
-@author: pabloalustiza
+Este programa incluye dos funciones:
+ejercicio1() : para calcular el máximo común divisor (MCD) entre dos números.
+ejercicio2() : para calcular el mínimo común múltiplo (MCM) entre dos números.
+
 """
 
 # %% EJERCICIO 1
@@ -15,9 +20,25 @@ ACTIVIDAD DE INTEGRACIÓN
 
 
 def maximo_comun_divisor(num1, num2):
-    divisor = 1
-    mcd = 1
+    """
+    Calcula el máximo común divisor (MCD) entre dos números.
 
+    Args:
+        num1 (int): Primer número.
+        num2 (int): Segundo número.
+
+    Returns:
+        int: El máximo común divisor entre num1 y num2.
+    """
+
+    # Verificar si uno de los números es cero
+    if num1 == 0:
+        return num2
+    if num2 == 0:
+        return num1
+
+    divisor = int(1)
+    mcd = int(1)
 
     mayor = max(num1, num2)
     menor = min(num1, num2)
@@ -38,18 +59,38 @@ def maximo_comun_divisor(num1, num2):
 # Escribir una función que calcule el mínimo común múltiplo entre dos números
 
 def minimo_comun_multiplo(num1, num2, mcd):
+    """
+    Calcula el mínimo común múltiplo (MCM) entre dos números.
+
+    Args:
+        num1 (int): Primer número.
+        num2 (int): Segundo número.
+        mcd (int): Máximo común divisor entre num1 y num2.
+
+    Returns:
+        int: El mínimo común múltiplo entre num1 y num2.
+
+    """
+     
     # mayor = max(num1, num2)
     # menor = min(num1, num2)
-    mcm = (num1 * num2)//mcd #la doble barra de división devuelve un número entero
+    # la doble barra de división devuelve un número entero
+    mcm = (num1 * num2)//mcd
     return mcm
 
  # %% EJECUTAR
 
 
 def main():
+    """
+    Función principal que ejecuta los ejercicios 1 y 2.
+    """
 
     # EJERCICIO 1
     def ejercicio1():
+        """
+        Ejercicio 1: Calcula el Máximo Común Divisor (MCD) entre dos números.
+        """
         print("")
         print("Calcula el Máximo Común Divisor (MCD) entre dos números:")
         print("")
@@ -63,6 +104,10 @@ def main():
 
     # EJERCICIO 2
     def ejercicio2():
+        """
+        Ejercicio 2: Calcula el Mínimo Común Múltiplo (MCM) entre dos números.
+        """
+
         print("")
         print("Calcula el Mínimo Común Múltiplo (MCM) entre dos números:")
         print("")
