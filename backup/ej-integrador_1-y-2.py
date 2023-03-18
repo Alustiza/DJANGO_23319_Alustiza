@@ -15,12 +15,6 @@ ejercicio2() : para calcular el mínimo común múltiplo (MCM) entre dos número
 
 """
 
-import os
-"""
-Módulo para proveer una interfaz para el sistema operativo.
-"""
-
-
 # %% EJERCICIO 1
 # Escribir una función que calcule el máximo común divisor entre dos números.
 
@@ -35,7 +29,6 @@ def maximo_comun_divisor(num1, num2):
 
     Returns:
         int: El máximo común divisor entre num1 y num2.
-
     """
 
     # Verificar si uno de los números es cero
@@ -96,12 +89,10 @@ def main():
     # EJERCICIO 1
     def ejercicio1():
         """
-
         Ejercicio 1: Calcula el Máximo Común Divisor (MCD) entre dos números.
-        
         """
         print("")
-        print("Ejercicio 1: calcula el Máximo Común Divisor (MCD) entre dos números:")
+        print("Calcula el Máximo Común Divisor (MCD) entre dos números:")
         print("")
         num1 = int(input("Ingrese el primer número: "))
         num2 = int(input("Ingrese el segundo número: "))
@@ -114,13 +105,11 @@ def main():
     # EJERCICIO 2
     def ejercicio2():
         """
-        
         Ejercicio 2: Calcula el Mínimo Común Múltiplo (MCM) entre dos números.
-       
         """
 
         print("")
-        print("Ejercicio 2: calcula el Mínimo Común Múltiplo (MCM) entre dos números:")
+        print("Calcula el Mínimo Común Múltiplo (MCM) entre dos números:")
         print("")
         num1 = int(input("Ingrese el primer número: "))
         num2 = int(input("Ingrese el segundo número: "))
@@ -139,5 +128,4 @@ def main():
 
 
 if __name__ == "__main__":
-    os.system('cls' if os.name == 'nt' else 'clear')
     main()

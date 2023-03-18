@@ -10,11 +10,6 @@ ACTIVIDAD DE INTEGRACIÓN
 @author: pabloalustiza
 """
 
-import os
-"""
-Módulo para proveer una interfaz para el sistema operativo.
-"""
-
 # %% EJERCICIO 8
 # Vamos a definir ahora una “Cuenta Joven”, para ello vamos a crear una nueva clase CuantaJoven que deriva de la clase creada en el punto 7. 
 # Cuando se crea esta nueva clase, además del titular y la cantidad se debe guardar una bonificación que estará expresada en tanto por ciento. 
@@ -200,5 +195,4 @@ def main():
 
 
 if __name__ == "__main__":
-    os.system('cls' if os.name == 'nt' else 'clear')
     main()

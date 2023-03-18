@@ -7,28 +7,25 @@ AÑO: 2023
 COMISIÓN: 23319
 ACTIVIDAD DE INTEGRACIÓN
 
-Este módulo define una clase Persona que tiene los atributos: nombre, edad y DNI. 
-Se definen getters y setters para acceder a esos valores como si fueran atributos.
-Se escribieron dos métodos: 
-- mostrar los datos de la persona 
-- validad si la persona es mayor de edad (+18)
-
 @author: pabloalustiza
-
 """
 
 import os
 """
 Módulo para proveer una interfaz para el sistema operativo.
-Se utiliza para limpiar la pantalla antes de ejecutar main()
 """
 
-# %% EJERCICIO 6
-# Crear una clase llamada Persona. Sus atributos son: nombre, edad y DNI. Construya los siguientes métodos para la clase:
-# Un constructor, donde los datos pueden estar vacíos.
-# Los setters y getters para cada uno de los atributos. Hay que validar las entradas de datos.
-# mostrar(): Muestra los datos de la persona.
-# Es_mayor_de_edad(): Devuelve un valor lógico indicando si es mayor de edad.
+# %% EJERCICIO 7
+# Crea una clase llamada Cuenta que tendrá los siguientes atributos: 
+# titular (que es una persona) y cantidad (puede tener decimales). 
+# El titular será obligatorio y la cantidad es opcional. 
+# Crear los siguientes métodos para la clase: 
+#  Un constructor, donde los datos pueden estar vacíos. 
+#  Los setters y getters para cada uno de los atributos. 
+# El atributo no se puede modificar directamente, sólo ingresando o retirando dinero. 
+#  mostrar(): Muestra los datos de la cuenta. 
+#  ingresar(cantidad): se ingresa una cantidad a la cuenta, si la cantidad introducida es negativa, no se hará nada. 
+#  retirar(cantidad): se retira una cantidad a la cuenta. La cuenta puede estar en números rojos.
 
 class Persona:
     """
@@ -133,6 +130,28 @@ class Persona:
         return 
 
 
+class Cuenta(Persona):
+    
+    def __init__(self, nombre, edad, dni, cantidad=0):
+        titular = super().__init__(nombre, edad, dni)
+        self.__cantidad = cantidad
+    
+    def set_cantidad(self, cantidad):
+        self.__cantidad = cantidad
+    
+    def get_cantidad(self):
+        return self.__cantidad
+    
+    def mostrar(self):
+        super().mostrar()
+        print("Cantidad:", self.__cantidad)
+    
+    def ingresar(self, cantidad):
+        if cantidad > 0:
+            self.__cantidad += cantidad
+    
+    def retirar(self, cantidad):
+        self.__cantidad -= cantidad
 
 
 
@@ -140,21 +159,19 @@ class Persona:
 
 
 def main():
-    """
 
-    Función principal que ejecuta el programa y su clase Persona
+    # EJERCICIO 7
+    def ejercicio7():
 
-    """
-    # EJERCICIO 6
-    def ejercicio6():
-        nueva_persona = Persona("richard",-10,29898090)
-        
-        nueva_persona.mostrar()
-        nueva_persona.es_mayor_de_edad()
+      
+        nueva_persona = Persona("Dylan", 82, 28383849)
+        nueva_cuenta = Cuenta(nueva_persona.nombre, nueva_persona.edad, nueva_persona.dni, -1000)
+       
+        nueva_cuenta.mostrar()
        
 
-    # Ejecuto el Ejercicio 6
-    ejercicio6()
+    # Ejecuto el Ejercicio 7
+    ejercicio7()
 
 
 if __name__ == "__main__":

@@ -10,26 +10,12 @@ ACTIVIDAD DE INTEGRACIÓN
 @author: pabloalustiza
 """
 
-import os
-"""
-Módulo para proveer una interfaz para el sistema operativo.
-"""
-
 # %% EJERCICIO 3
 # Escribir un programa que reciba una cadena de caracteres y devuelva un diccionario con cada palabra que contiene y la cantidad de veces que aparece (frecuencia).
 
 
 def crear_diccionario(txt1):
-    '''
-    Recibe una cadena de caracteres y devuelve un diccionario con cada palabra y la cantidad de veces que aparece.
-
-    Args:
-        txt1 (str): Cadena de caracteres de entrada.
-
-    Returns:
-        dict: Diccionario con las palabras contenidas en la cadena y la cantidad de veces que aparece cada una.
-
-    '''
+    '''Recibe una cadena de caracteres y regresa un diccionario con las palabras (keys) y la cantidad que aparecen (value)'''
     txt1 = txt1.lower()
     lista_palabras = txt1.split()
 
@@ -43,16 +29,6 @@ def crear_diccionario(txt1):
     return diccionario_cadena
 
 def mayor_frecuencia_diccionario(diccionario):
-    '''
-    Recibe un diccionario y devuelve la palabra más frecuente y su cantidad de apariciones.
-
-    Args:
-        diccionario (dict): Diccionario de entrada.
-
-    Returns:
-        tuple: Tupla con la palabra más frecuente y su cantidad de apariciones.
-
-    '''
     palabra_mas_frecuente = ""
     cantidad=0
     for keys,values in diccionario.items():
@@ -69,20 +45,10 @@ def mayor_frecuencia_diccionario(diccionario):
 
 
 def main():
-    '''
-    
-    Función principal que llama a las funciones "ejercicio3" y "ejercicio4".
-    
-    '''
+
     # EJERCICIO 3
     def ejercicio3():
-        '''
-
-        Pide una cadena de caracteres al usuario y devuelve un diccionario con cada palabra y la cantidad de veces que aparece.
-
-        '''
         print("")
-        print("Ejercicio 3")
         print("Ingrese una cadena de caracteres y le devolveremos un diccionario con cada palabra y la cantidad de veces que aparece:")
         print("")
         txt1 = (input("Ingrese una cadena de caracteres:"))
@@ -101,13 +67,7 @@ def main():
 
     # EJERCICIO 4
     def ejercicio4():
-        '''
-
-        Pide una cadena de caracteres al usuario y devuelve la palabra más frecuente y su cantidad de apariciones.
-
-        '''
         print("")
-        print("Ejercicio 4")
         print("Ingrese una cadena de caracteres y le devolveremos cuál es la palabra que más aparece y cuántas veces lo hace:")
         print("")
         txt1 = (input("Ingrese una cadena de caracteres:"))
@@ -133,5 +93,4 @@ def main():
 
 
 if __name__ == "__main__":
-    os.system('cls' if os.name == 'nt' else 'clear')
     main()

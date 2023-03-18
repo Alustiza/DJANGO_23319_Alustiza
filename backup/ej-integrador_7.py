@@ -10,11 +10,6 @@ ACTIVIDAD DE INTEGRACIÓN
 @author: pabloalustiza
 """
 
-import os
-"""
-Módulo para proveer una interfaz para el sistema operativo.
-"""
-
 # %% EJERCICIO 7
 # Crea una clase llamada Cuenta que tendrá los siguientes atributos: 
 # titular (que es una persona) y cantidad (puede tener decimales). 
@@ -111,5 +106,4 @@ def main():
 
 
 if __name__ == "__main__":
-    os.system('cls' if os.name == 'nt' else 'clear')
     main()
