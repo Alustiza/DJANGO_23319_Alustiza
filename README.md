@@ -1,5 +1,4 @@
-# DJANGO_23319_Alustiza
- """
+    # DJANGO_23319_Alustiza
     
     CODO A CODO - 1er SEMESTRE 2023
     COMISIÓN: 23319
@@ -31,7 +30,7 @@
 
     Muchas gracias!
     
-"""
+
 
 
 
