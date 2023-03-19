@@ -26,141 +26,439 @@ Módulo para proveer una interfaz para el sistema operativo.
 #  El método mostrar() debe devolver el mensaje de “Cuenta Joven” y la bonificación de la cuenta.
 
 class Persona:
+    """
+    Una clase que representa a una persona con nombre, edad y DNI.
+    """
+
     def __init__(self, nombre="", edad=0, dni=""):
+        """
+        Constructor para la clase Persona.
+
+        Args:
+            nombre (str): El nombre de la persona. Puede estar vacío.
+            edad (int): La edad de la persona. Por defecto, es 0.
+            dni (str): El número de identificación de la persona. El valor que se ingrese debe ser numérico y de 8 carácteres. 
+
+        """
+        while not nombre:
+            print("////////////////////////////////")
+            print("//////////   ERROR   ///////////")
+            print("////////////////////////////////")
+            print("El nombre no puede estar vacío.")
+            nombre = input("Por favor, ingrese un nombre válido: ")
+        print("////////////////////////////////")
+        print("//////  OK. NOMBRE.   //////////")
+        print("////////////////////////////////")
+        self._nombre = nombre
+
         
-        if edad >= 0:
-            self.nombre = nombre
-            self.edad = edad
-            self.dni = dni
-        else:
-            print("La edad no puede ser un número negativo. De manera temporal le asignamos el valor 0")
-            self.nombre = nombre
-            self.edad = 0
-            self.dni = dni
+        while edad <= 0:
+            try:
+                print("////////////////////////////////")
+                print("////////// ERROR. EDAD /////////")
+                print("////////////////////////////////")
+                print("La edad debe ser mayor a cero.")
+                edad = int(input("Por favor, ingrese su edad: "))
+                if edad <= 0:
+                    print("La edad debe ser mayor a cero.")
+            except ValueError:
+                print("La edad debe ser un número entero mayor a cero. Inténtelo nuevamente.")
+        print("////////////////////////////////")
+        print("////////  OK. EDAD.   //////////")
+        print("////////////////////////////////")
+        self._edad = edad
+
+                 
+
+        while not dni.isdigit() or len(dni) != 8:
+            print("////////////////////////////////")
+            print("////////// ERROR ///////////")
+            print("////////////////////////////////")
+            print("El DNI debe tener 8 caracteres numéricos.")
+            dni = input("Ingrese el número de DNI: ")
+            if not dni.isdigit() or len(dni) != 8:
+                print("////////////////////////////////")
+                print("////////// ERROR ///////////")
+                print("////////////////////////////////")
+                print("El DNI debe tener 8 caracteres numéricos.")
+        print("////////////////////////////////")
+        print("////////  OK. DNI.   //////////")
+        print("////////////////////////////////")
+        self._dni = dni
+      
         
-    
+                
+      
+    @property
+    def nombre(self):
+        """
+        Obtiene el nombre de la persona.
 
-    def set_nombre(self, nombre):
-        self.nombre = nombre
+        Returns:
+            str: El nombre de la persona.
+        """
+        return self._nombre
+
+    @nombre.setter
+    def nombre(self, nombre):
+        """
+        Establece el nombre de la persona.
+
+        Args:
+            nombre (str): El nombre de la persona.
+        """
+        while not nombre:
+            print("////////////////////////////////")
+            print("//////////   ERROR   ///////////")
+            print("////////////////////////////////")
+            print("El nombre no puede estar vacío.")
+            nombre = input("Por favor, ingrese un nombre válido: ")
+        print("////////////////////////////////")
+        print("//////  OK. NOMBRE.   //////////")
+        print("////////////////////////////////")
+        self._nombre = nombre
+
+    @property
+    def edad(self):
+        """
+        Obtiene la edad de la persona.
+
+        Returns:
+            int: La edad de la persona como entero positivo
+        """
+        return self._edad
+
+    @edad.setter
+    def edad(self, edad):
+        """
+        Establece la edad de la persona.
+
+        Args:
+            edad (int): La edad de la persona como entero positivo
+        """
+        while edad <= 0:
+            try:
+                print("////////////////////////////////")
+                print("////////// ERROR. EDAD /////////")
+                print("////////////////////////////////")
+                print("La edad debe ser mayor a cero.")
+                edad = int(input("Por favor, ingrese su edad: "))
+                if edad <= 0:
+                    print("La edad debe ser mayor a cero.")
+            except ValueError:
+                print("La edad debe ser un número entero mayor a cero. Inténtelo nuevamente.")
+        print("////////////////////////////////")
+        print("////////  OK. EDAD.   //////////")
+        print("////////////////////////////////")
+        self._edad = edad
+
+    @property
+    def dni(self):
+        """
+        Obtiene el número de dni de la persona.
+
+        Returns:
+            str: El número de dni de la persona.
+        """
+        return self._dni
+
+    @dni.setter
+    def dni(self, dni):
+        """
+        Establece el número de dni de la persona.
+
+        Args:
+            dni (str): El número de dni de la persona validado = 8 caracteres
+        """
+        while not dni.isdigit() or len(dni) != 8:
+            print("////////////////////////////////")
+            print("////////// ERROR ///////////")
+            print("////////////////////////////////")
+            print("El DNI debe tener 8 caracteres numéricos.")
+            dni = input("Ingrese el número de DNI: ")
+            if not dni.isdigit() or len(dni) != 8:
+                print("////////////////////////////////")
+                print("////////// ERROR ///////////")
+                print("////////////////////////////////")
+                print("El DNI debe tener 8 caracteres numéricos.")
+        print("////////////////////////////////")
+        print("////////  OK. DNI.   //////////")
+        print("////////////////////////////////")
+        self._dni = dni
 
 
-    def get_nombre(self):
-        return self.nombre
-    
-    def set_edad(self, edad):
-        if edad >= 0:
-            self.edad = edad
-        else:
-            print("La edad no puede ser un número negativo. De manera temporal le asignamos el valor 0")
-
-    def get_edad(self):
-        return self.edad
-    
-    def set_dni(self, dni):
-        if len(dni) == 8:
-            self.dni = dni
-        else:
-            print("El DNI debe tener 8 caracteres.")
-
-            
-    def get_dni(self):
-        return self.dni
-    
-    
-    
     def mostrar(self):
-        print("Nombre:", self.nombre)
-        print("Edad:", self.edad)
-        print("DNI:", self.dni)
-    
+        """
+        Muestra los datos de la persona.
+        """
+        print("")
+        print("///////////////////////////////////")
+        print("DATOS PERSONALES:")
+        print("///////////////////////////////////")
+        print("")
+        print("Nombre:", self._nombre)
+        print("Edad:", self._edad)
+        print("DNI:", self._dni)
+        print("")
+
     def es_mayor_de_edad(self):
-        return self.edad >= 18
+        """
+        Comprueba si la persona es mayor de edad. +18
 
+        Returns:
+            bool: True si la persona es mayor de edad, False en caso contrario.
+        """
+        print("")
+        print("Es mayor de edad (+18):", self._edad >= 18)
+        print("")
+        return
 
-class Cuenta(Persona):
+##############
+
+class Cuenta:
+    """
+    Clase que crea una cuenta con un titular (una persona) y una cantidad de dinero (puede tener decimales).
+    """
+
+    def __init__(self, titular=None, cantidad=0):
+        """
+        Constructor para la clase Cuenta.
+
+        Args:
+            titular (Persona): La persona titular de la cuenta.
+            cantidad (float): La cantidad de dinero en la cuenta. Por defecto, es 0. Puede tener decimales.
+        """
+        self._titular = titular
+        self._cantidad = cantidad
+
+    @property
+    def titular(self):
+        """
+        Obtiene la persona titular de la cuenta.
+
+        Returns:
+            Persona: La persona titular de la cuenta.
+        """
+        return self._titular
+
+    @titular.setter
+    def titular(self, titular):
+        """
+        Establece la persona titular de la cuenta.
+
+        Args:
+            titular (Persona): La persona titular de la cuenta.
+        """
+        self._titular = titular
+
+    @property
+    def cantidad(self):
+        """
+        Obtiene la cantidad de dinero en la cuenta.
+
+        Returns:
+            float: La cantidad de dinero en la cuenta.
+        """
+        return self._cantidad
     
-    def __init__(self, nombre, edad, dni, cantidad=0):
-        super().__init__(nombre, edad, dni)
-        self.__cantidad = cantidad
-    
-    def set_cantidad(self, cantidad):
-        self.__cantidad = cantidad
-    
-    def get_cantidad(self):
-        return self.__cantidad
-    
+    @cantidad.setter
+    def cantidad(self):
+        """
+        Establece la cantidad de dinero en la cuenta.
+
+        Returns:
+            float: La cantidad de dinero en la cuenta.
+        """
+        return self._cantidad
+
     def mostrar(self):
-        super().mostrar()
-        print("Cantidad:", self.__cantidad)
-    
-    def ingresar(self, cantidad):
-        if cantidad > 0:
-            self.__cantidad += cantidad
-    
-    def retirar(self, cantidad):
-        self.__cantidad -= cantidad
+        """
+        Muestra los datos de la cuenta.
+        """
+        print("")
+        
+        print("DATOS DE LA CUENTA")
+        print("")
+        print("TITULAR:")
+        self._titular.mostrar()
+        print("")
+        print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+        print("")
 
+    def ingresar(self, cantidad):
+        """
+        Ingresa una cantidad de dinero en la cuenta.
+
+        Args:
+            cantidad (float): La cantidad de dinero a ingresar.
+
+        Returns:
+            bool: True si la operación fue exitosa, False en caso contrario.
+        """
+        if cantidad > 0:
+            self._cantidad += cantidad
+            print("")
+            print("///////////////////////////////////")
+            print("INGRESO SOLICITADO:", cantidad)
+            print("///////////////////////////////////")
+            print("La solicitud de ingreso fue exitosa.")
+            print("///////////////////////////////////")
+            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print("")
+            return True
+        else:
+            print("")
+            print("//////////////////////////////////////////")
+            print("La solicitud de ingreso no se completó.")
+            print("No se puede ingresar una cantidad negativa.")
+            print("//////////////////////////////////////////")
+            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print("")
+
+            return False
+
+    def retirar(self, cantidad):
+        """
+        Retira una cantidad de dinero de la cuenta.
+
+        Args:
+            cantidad (float): La cantidad de dinero a retirar.
+
+        Returns:
+            bool: True si la operación fue exitosa, False en caso contrario.
+        """
+        if cantidad > 0:
+            self._cantidad -= cantidad
+            print("")
+            print("///////////////////////////////////")
+            print("RETIRO SOLICITADO:", cantidad)
+            print("///////////////////////////////////")
+            print("La solicitud de retiro fue exitosa.")
+            print("///////////////////////////////////")
+            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print("")
+            return True
+        else:
+            print("")
+            print("//////////////////////////////////////////")
+            print("La solicitud de retiro no se completó.")
+            print("No se puede retirar una cantidad negativa.")
+            print("//////////////////////////////////////////")
+            print("")
+            
+            return False
+
+##############
 
 class CuentaJoven(Cuenta):
-    def __init__(self, nombre, edad, dni, cantidad, bonificacion=0):
-        print("")
-
-        if edad  < 18 :
+    def __init__(self, titular, cantidad, bonificacion=0):
+        self._titular=titular
+        if titular.edad  < 18 :
             print("Lo siento, eres menor de 18 años y no puedes abrir una cuenta con nosotros.")
-            super().__init__(nombre, edad, dni)
-            self.bonificacion = 0
-            self.tipoCuenta = "Menor 18 años:"
+            super().__init__(titular)
+            self._bonificacion = 0
+            self.tipoCuenta = "CUENTA NO ACTIVA. Menor 18 años. "
         else:
-            if edad > 25:
+            if titular.edad > 25:
                 print("Lo siento, eres mayor de 25 años y no calificas para la bonificación de la Cuenta Joven. Pero calificas para las Cuentas +25.")
-                super().__init__(nombre, edad, dni, cantidad)
-                self.bonificacion = 0
-                self.tipoCuenta = "Cuenta +25 años:"
+                super().__init__(titular, cantidad)
+                self._bonificacion=0
+                self.tipoCuenta = "CUENTA +25 AÑOS ACTIVA"
 
             else:
-                super().__init__(nombre, edad, dni, cantidad)
-                self.bonificacion = bonificacion/100
-                self.tipoCuenta = "Cuenta Joven:"
-        
-    def set_bonificacion(self, bonificacion):     
-        if self.es_titular_valido():
-            self.bonificacion = bonificacion / 100
-        else:
-            if self.get_edad() > 25:
-                # print("Lo siento, no se puede asignar una bonificación a una cuenta para mayores de 25 años.")
-                self.bonificacion = 0 / 100
-            elif self.edad < 18:
-                # print("Lo siento, no se puede asignar una bonificación a una cuenta para menores de 18 años.")
-                self.bonificacion = 0 / 100
-       
-            
+                super().__init__(titular, cantidad)
+                self._bonificacion = bonificacion
+                self.tipoCuenta = "CUENTA JOVEN ACTIVA"
 
-    def get_bonificacion(self):
+    @property
+    def bonificacion(self):
+        """
+            Obtiene la bonificación en la cuenta.
+
+            Returns:
+                %: La bonificación en la cuenta.
+            """
         return self.bonificacion
-    
-    def mostrar(self):
-        print("")
-        print(self.tipoCuenta)
-        print("")
-        # print("Nombre:", self.get_nombre())
-        # print("Edad:", self.get_edad())
-        # print("DNI:", self.get_dni())
-        # print("Cantidad:", self.get_cantidad())
-        super().mostrar()
-        print("Bonificación:", "{:.0f}%".format(self.bonificacion * 100))
-        print("")
+
+    @bonificacion.setter
+    def bonificacion(self):
+        """
+            Obtiene la bonificación en la cuenta.
+
+            Returns:
+                %: La bonificación en la cuenta.
+            """
+        return self.bonificacion
 
     def es_titular_valido(self):
-        return 18 <= self.get_edad() <= 25
-    
+        return 18 <= self.titular.edad <= 25      
+            
+    def mostrar(self):
+        """
+        Muestra los datos de la cuenta.
+        """
+        print("")
+        print("Tipo de Cuenta: ",self.tipoCuenta)
+        print("¿Titular válido Cuenta Joven? ",self.es_titular_valido())
+        print("")
+        print("DATOS DE LA PERSONA:")
+        print("")
+        print("Nombre: ",self._titular.nombre)
+   
+        print("Edad: ",self._titular.edad)
+
+        print("DNI: ",self._titular.dni)
+
+        print("")
+        print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+
+        print("")
+        print("BONIFICACIÓN:", "{:.0f}%".format(self._bonificacion))
+        print("")
+      
+        print("")
+
     def retirar(self, cantidad):
-        if self.es_titular_valido():
-            super().retirar(cantidad)
-            print("El retiro de", cantidad, "se realizó correctamente.")
+        """
+        Retira una cantidad de dinero de la cuenta.
 
+        Args:
+            cantidad (float): La cantidad de dinero a retirar.
+
+        Returns:
+            bool: True si la operación fue exitosa, False en caso contrario.
+        """
+        if self.es_titular_valido() == True:
+            if cantidad > 0:
+                self._cantidad -= cantidad
+                print("")
+                print("///////////////////////////////////")
+                print("RETIRO SOLICITADO:", cantidad)
+                print("///////////////////////////////////")
+                print("La solicitud de retiro fue exitosa.")
+                print("///////////////////////////////////")
+                print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+                print("")
+                return True
+            else:
+                print("")
+                print("///////////////////////////////////")
+                print("RETIRO SOLICITADO:", cantidad)
+                print("///////////////////////////////////")
+                print("La solicitud de retiro no se completó.")
+                print("Titular No Válido de Cuenta Joven.")
+                print("///////////////////////////////////")
+                print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+                print("")
+                
+                return False
         else:
-            print("El titular no es válido para retirar dinero.")
-
+            print("")
+            print("//////////////////////////////////////////")
+            print("La solicitud de retiro no se completó.")
+            print("TITULAR NO VÁLIDO.")
+            print("//////////////////////////////////////////")
+            print("")
 
 
     
@@ -175,21 +473,20 @@ def main():
     def ejercicio8():
 
       
-
+        titular = Persona("RitaLee",25,"23222222")
 
         # Crear un objeto CuentaJoven
-        cuenta_joven_Lima = CuentaJoven("Lima",21, "50343587", 777)
+        nueva_cuenta_joven = CuentaJoven(titular, 1000,80)
 
-        # Asignar un valor de bonificacion a la Cuenta Joven
-        cuenta_joven_Lima.set_bonificacion(42)
+        nueva_cuenta_joven.mostrar()
 
-        cuenta_joven_Lima.mostrar()
-        print("El titular califica para una Cuenta Joven:", cuenta_joven_Lima.es_titular_valido())
-        print("")
+        
+        print("SOLICITUD DE RETIRO")
+        cantidad_retiro = int(input("Ingrese la cantidad a retirar de su cuenta:"))
+        nueva_cuenta_joven.retirar(cantidad_retiro)
+        
 
-        cuenta_joven_Lima.retirar(10)
 
-        cuenta_joven_Lima.mostrar()
 
 
 

@@ -262,6 +262,16 @@ class Cuenta:
             float: La cantidad de dinero en la cuenta.
         """
         return self._cantidad
+    
+    @cantidad.setter
+    def cantidad(self):
+        """
+        Establece la cantidad de dinero en la cuenta.
+
+        Returns:
+            float: La cantidad de dinero en la cuenta.
+        """
+        return self._cantidad
 
     def mostrar(self):
         """
@@ -290,6 +300,8 @@ class Cuenta:
         if cantidad > 0:
             self._cantidad += cantidad
             print("")
+            print("///////////////////////////////////")
+            print("INGRESO SOLICITADO:", cantidad)
             print("///////////////////////////////////")
             print("La solicitud de ingreso fue exitosa.")
             print("///////////////////////////////////")
@@ -320,6 +332,8 @@ class Cuenta:
         if cantidad > 0:
             self._cantidad -= cantidad
             print("")
+            print("///////////////////////////////////")
+            print("RETIRO SOLICITADO:", cantidad)
             print("///////////////////////////////////")
             print("La solicitud de retiro fue exitosa.")
             print("///////////////////////////////////")
