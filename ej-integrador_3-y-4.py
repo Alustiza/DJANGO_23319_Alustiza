@@ -19,6 +19,7 @@ Módulo para proveer una interfaz para el sistema operativo.
 # Escribir un programa que reciba una cadena de caracteres y devuelva un diccionario con cada palabra que contiene y la cantidad de veces que aparece (frecuencia).
 
 
+
 def crear_diccionario(txt1):
     '''
     Recibe una cadena de caracteres y devuelve un diccionario con cada palabra y la cantidad de veces que aparece.
@@ -41,6 +42,9 @@ def crear_diccionario(txt1):
             diccionario_cadena[i]= 1
 
     return diccionario_cadena
+
+# %% EJERCICIO 4
+# Escribir una función que reciba una cadena de caracteres y devuelva un diccionario con cada palabra que contiene y la cantidad de veces que aparece (frecuencia). Escribir otra función que reciba el diccionario generado con la función anterior y devuelva una tupla con la palabra más repetida y su frecuencia.
 
 def mayor_frecuencia_diccionario(diccionario):
     '''
