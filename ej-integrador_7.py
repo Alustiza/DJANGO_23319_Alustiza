@@ -284,7 +284,7 @@ class Cuenta:
         print("TITULAR:")
         self._titular.mostrar()
         print("")
-        print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+        print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
         print("")
 
     def ingresar(self, cantidad):
@@ -301,11 +301,11 @@ class Cuenta:
             self._cantidad += cantidad
             print("")
             print("///////////////////////////////////")
-            print("INGRESO SOLICITADO:", cantidad)
+            print(f"INGRESO SOLICITADO: ${cantidad}")
             print("///////////////////////////////////")
             print("La solicitud de ingreso fue exitosa.")
             print("///////////////////////////////////")
-            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
             print("")
             return True
         else:
@@ -314,7 +314,7 @@ class Cuenta:
             print("La solicitud de ingreso no se completó.")
             print("No se puede ingresar una cantidad negativa.")
             print("//////////////////////////////////////////")
-            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
             print("")
 
             return False
@@ -333,11 +333,11 @@ class Cuenta:
             self._cantidad -= cantidad
             print("")
             print("///////////////////////////////////")
-            print("RETIRO SOLICITADO:", cantidad)
+            print(f"RETIRO SOLICITADO: ${cantidad}")
             print("///////////////////////////////////")
             print("La solicitud de retiro fue exitosa.")
             print("///////////////////////////////////")
-            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
             print("")
             return True
         else:
@@ -370,27 +370,30 @@ def main():
     print("CREAR NUEVA CUENTA")
     print("Ingrese los datos del titular de la cuenta:")
     
-    #titular = Persona()
-    titular = Persona("RitaLee",23,"23222222")
+    
+    
+    # Prueba creando una Persona sin enviar valores para los atributos
+    titular = Persona()
+
+     # Prueba creando una Persona enviando valores para los atributos
+    #titular = Persona("RitaLee",23,"23222222")
     nueva_cuenta = Cuenta(titular, 0)
 
+    # Muestra los datos de la cuenta
     nueva_cuenta.mostrar()
 
-    #Probando que las validaciones funcionen en el setter de DNI
-    #titular.dni="22333333""
-
-    nueva_cuenta.mostrar()
-
+    # Solicitud de retiro a partir del valor que ingresa el usuario
     print("SOLICITUD DE RETIRO")
-    cantidad_retiro = int(input("Ingrese la cantidad a retirar de su cuenta:"))
+    cantidad_retiro = int(input("Ingrese la cantidad a retirar de su cuenta: $"))
     nueva_cuenta.retirar(cantidad_retiro)
 
+    # Solicitud de ingreso a partir del valor que ingresa el usuario
     print("SOLICITUD DE INGRESO")
-    cantidad_ingreso = int(input("Ingrese la cantidad a ingresar en su cuenta:"))
+    cantidad_ingreso = int(input("Ingrese la cantidad a ingresar en su cuenta: $"))
     nueva_cuenta.ingresar(cantidad_ingreso)
 
-
-
+    # Muestra los datos de la cuenta
+    nueva_cuenta.mostrar()
 
 
     # Ejecuto el Ejercicio 7

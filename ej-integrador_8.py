@@ -282,7 +282,7 @@ class Cuenta:
         print("TITULAR:")
         self._titular.mostrar()
         print("")
-        print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+        print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
         print("")
 
     def ingresar(self, cantidad):
@@ -299,11 +299,11 @@ class Cuenta:
             self._cantidad += cantidad
             print("")
             print("///////////////////////////////////")
-            print("INGRESO SOLICITADO:", cantidad)
+            print(f"INGRESO SOLICITADO: ${cantidad}")
             print("///////////////////////////////////")
             print("La solicitud de ingreso fue exitosa.")
             print("///////////////////////////////////")
-            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
             print("")
             return True
         else:
@@ -312,7 +312,7 @@ class Cuenta:
             print("La solicitud de ingreso no se completó.")
             print("No se puede ingresar una cantidad negativa.")
             print("//////////////////////////////////////////")
-            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
             print("")
 
             return False
@@ -331,11 +331,11 @@ class Cuenta:
             self._cantidad -= cantidad
             print("")
             print("///////////////////////////////////")
-            print("RETIRO SOLICITADO:", cantidad)
+            print(f"RETIRO SOLICITADO: ${cantidad}")
             print("///////////////////////////////////")
             print("La solicitud de retiro fue exitosa.")
             print("///////////////////////////////////")
-            print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+            print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
             print("")
             return True
         else:
@@ -378,7 +378,7 @@ class CuentaJoven(Cuenta):
             Returns:
                 %: La bonificación en la cuenta.
             """
-        return self.bonificacion
+        return self._bonificacion
 
     @bonificacion.setter
     def bonificacion(self):
@@ -388,7 +388,7 @@ class CuentaJoven(Cuenta):
             Returns:
                 %: La bonificación en la cuenta.
             """
-        return self.bonificacion
+        return self._bonificacion
 
     def es_titular_valido(self):
         return 18 <= self.titular.edad <= 25      
@@ -410,8 +410,7 @@ class CuentaJoven(Cuenta):
         print("DNI: ",self._titular.dni)
 
         print("")
-        print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
-
+        print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
         print("")
         print("BONIFICACIÓN:", "{:.0f}%".format(self._bonificacion))
         print("")
@@ -433,30 +432,39 @@ class CuentaJoven(Cuenta):
                 self._cantidad -= cantidad
                 print("")
                 print("///////////////////////////////////")
-                print("RETIRO SOLICITADO:", cantidad)
+                print(f"RETIRO SOLICITADO: ${cantidad}")
                 print("///////////////////////////////////")
+                print("///////////////////////////////////")
+                print("//////  OK.   /////////////////////")
+                print("////////////////////////////////")
                 print("La solicitud de retiro fue exitosa.")
                 print("///////////////////////////////////")
-                print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+                print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
                 print("")
                 return True
             else:
                 print("")
                 print("///////////////////////////////////")
-                print("RETIRO SOLICITADO:", cantidad)
+                print(f"RETIRO SOLICITADO: ${cantidad}")
                 print("///////////////////////////////////")
+                print("///////////////////////////////////////////")
+                print("////////// ERROR. /////////////////////////")
+                print("///////////////////////////////////////////")
                 print("La solicitud de retiro no se completó.")
                 print("Titular No Válido de Cuenta Joven.")
                 print("///////////////////////////////////")
-                print("CANTIDAD ACTUALIZADA EN CUENTA:", self._cantidad)
+                print(f"CANTIDAD ACTUALIZADA EN CUENTA: ${self._cantidad}")
                 print("")
                 
                 return False
         else:
             print("")
+            print("///////////////////////////////////////////")
+            print("////////// ERROR. /////////////////////////")
+            print("///////////////////////////////////////////")
+            print("// La solicitud de retiro no se completó. /")
             print("//////////////////////////////////////////")
-            print("La solicitud de retiro no se completó.")
-            print("TITULAR NO VÁLIDO.")
+            print("//////// TITULAR NO VÁLIDO. //////////////")
             print("//////////////////////////////////////////")
             print("")
 
@@ -472,24 +480,31 @@ def main():
     # EJERCICIO 8
     def ejercicio8():
 
-      
-        titular = Persona("RitaLee",25,"23222222")
+        # Crear una persona enviando los valores de nombre, edad y dni
+        titular = Persona("RitaLee",7,"23222222")
+
+        # Crear una persona sin enviar valores
+        #titular = Persona()
 
         # Crear un objeto CuentaJoven
         nueva_cuenta_joven = CuentaJoven(titular, 1000,80)
 
+        # Muestra los datos de la cuenta joven creada
         nueva_cuenta_joven.mostrar()
 
-        
+        # Solicitud de retiro a partir del valor que ingresa el usuario
         print("SOLICITUD DE RETIRO")
-        cantidad_retiro = int(input("Ingrese la cantidad a retirar de su cuenta:"))
+        cantidad_retiro = int(input("Ingrese la cantidad a retirar de su cuenta: $"))
         nueva_cuenta_joven.retirar(cantidad_retiro)
+
+        # Solicitud de ingreso a partir del valor que ingresa el usuario
+        print("SOLICITUD DE INGRESO")
+        cantidad_ingreso = int(input("Ingrese la cantidad a ingresar en su cuenta: $"))
+        nueva_cuenta_joven.ingresar(cantidad_ingreso)
+
+        # Muestra los datos de la cuenta
+        nueva_cuenta_joven.mostrar()
         
-
-
-
-
-
        
 
     # Ejecuto el Ejercicio 8
