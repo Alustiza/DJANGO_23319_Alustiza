@@ -10,7 +10,9 @@
     Archivos incluidos:
 
     Ejercicio 1 y Ejercicio 2: 
-    /ej-integrador_1-y-2.py
+  [  /ej-integrador_1-y-2.py](https://github.com/Alustiza/DJANGO_23319_Alustiza/blob/main/ej-integrador_1-y-2.py)
+  
+    
 
     Ejercicio 3 y Ejercicio 4: 
     /ej-integrador_3-y-4.py
